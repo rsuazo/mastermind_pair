@@ -11,5 +11,8 @@ We're building a Mastermind Game similar to the one found [here as part of The O
 4. updated RSpec configuration to suppress console output during testing
 5. reduced `@colors` array to `%w[r o y g b i v]` since the existence of `blue` and `black` created some ambiguity
 6. removed `@converted_code` since it's now redundant
+7. Added new lines to the `#get_guess` method to provide more instructions to user
+8. created `lib/run_this_file.rb` and moved the engine into `run_this_file.rb`
+
 
 
