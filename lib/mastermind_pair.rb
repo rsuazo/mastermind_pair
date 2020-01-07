@@ -23,7 +23,7 @@ class Game
       elsif guess.chars.uniq.length != 4
         puts "No duplicates"
       else
-        puts "Valid Guess"
+        puts "Valid Guess: This is now turn: #{round}"
         break
       end
 
@@ -43,9 +43,11 @@ class Game
   # end
 
   def play_round
-    get_guess # produce a string of four characters
-    compare_guess(guess) # compare the four characters from #get_guess against game.converted_code
-    output_response # display progress of game
-    round += 1
+    while round < 10
+      get_guess # produce a string of four characters
+      #output_response # display progress of game
+      @round += 1
+    end
+    puts "Game over"
   end
 end
