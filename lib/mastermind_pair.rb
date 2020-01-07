@@ -2,9 +2,8 @@ class Game
   attr_accessor :secret_code, :colors, :converted_code, :round, :guess
   
   def initialize
-    @colors = ["red", "blue", "green", "yellow", "black", "white", "indigo"]
+    @colors = %w[r o y g b i v]
     @secret_code = @colors.sample(4)
-    @converted_code = @secret_code.map {|element| element[0]}
     @round = 1
     @guess = ''
   end

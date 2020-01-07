@@ -7,5 +7,7 @@ We're building a Mastermind Game similar to the one found [here as part of The O
 ## 1/6/2020:
 1. created 'lib/' directory
 2. moved 'mastermind_pair.rb' into `lib/`
-2. initialized 'rspec'
+3. initialized 'rspec'
+4. updated RSpec configuration to suppress console output during testing
+
 
