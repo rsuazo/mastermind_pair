@@ -13,6 +13,7 @@ We're building a Mastermind Game similar to the one found [here as part of The O
 6. removed `@converted_code` since it's now redundant
 7. Added new lines to the `#get_guess` method to provide more instructions to user
 8. created `lib/run_this_file.rb` and moved the engine into `run_this_file.rb`
+9. built out `#get_guess` validation
 
 
 

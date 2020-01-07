@@ -16,10 +16,14 @@ class Game
       guess = gets.chomp.downcase
       if guess.length != 4
         p @secret_code
-        puts "Invalid entry! Try again!"
+        puts "Invalid entry; only 4 colors"
+      elsif !guess.chars.all? { |x| colors.include?(x) }
+        puts "Invalid entry; your options are"
+        puts "(r)ed (o)range (y)ellow (g)reen (b)lue (i)ndigo (v)iolet"
+      elsif guess.chars.uniq.length != 4
+        puts "No duplicates"
       else
-        puts "Good choice!"
-        guess
+        puts "Valid Guess"
         break
       end
 
