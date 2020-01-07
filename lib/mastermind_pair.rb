@@ -1,11 +1,12 @@
 class Game
-  attr_accessor :secret_code, :colors, :converted_code, :round, :guess
+  attr_accessor :secret_code, :colors, :converted_code, :round, :guess, :board
 
   def initialize
     @colors = %w[r o y g b i v]
     @secret_code = @colors.sample(4)
     @round = 1
     @guess = ""
+    @board = []
   end
 
   def get_guess
@@ -23,7 +24,11 @@ class Game
       elsif guess.chars.uniq.length != 4
         puts "No duplicates"
       else
-        puts "Valid Guess: This is now turn: #{round}"
+        puts "Valid Guess: This is now turn: #{round}\n\n"
+        board << guess.chars
+        board.each do |row|
+          print row, "\n"
+        end
         break
       end
 

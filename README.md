@@ -14,6 +14,7 @@ We're building a Mastermind Game similar to the one found [here as part of The O
 7. Added new lines to the `#get_guess` method to provide more instructions to user
 8. created `lib/run_this_file.rb` and moved the engine into `run_this_file.rb`
 9. built out `#get_guess` validation
+10. roughed in a cheap board, by adding `@board`
 
 
 
