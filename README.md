@@ -9,5 +9,7 @@ We're building a Mastermind Game similar to the one found [here as part of The O
 2. moved 'mastermind_pair.rb' into `lib/`
 3. initialized 'rspec'
 4. updated RSpec configuration to suppress console output during testing
+5. reduced `@colors` array to `%w[r o y g b i v]` since the existence of `blue` and `black` created some ambiguity
+6. removed `@converted_code` since it's now redundant
 
 
