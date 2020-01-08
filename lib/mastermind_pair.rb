@@ -49,14 +49,28 @@ class Game
   #   end
   # end
 
+  # def show_board
+  #   board << guess.chars
+  #   update_progress(guess)
+  #   board.each_with_index do |row, i|
+  #     print row, feedback[i], "\n"
+  #   end
+  # end
+
   def update_progress(str1 = nil)
     i = 0
     hints = []
-    if str1.chars[i] == secret_code[i]
-      hints << "+"
-    elsif secret_code.include?(str1.chars[i])
-      hints << "_"
-    else
+    while i < str1.chars.length
+      if secret_code.include?(str1.chars[i])
+        if str1.chars[i] == secret_code[i]
+          hints << "+"
+        else
+          hints << "_"
+        end
+      end
+      i += 1
+    end
+    while hints.length != 4
       hints << " "
     end
     feedback << hints
@@ -65,9 +79,9 @@ class Game
   def play_round
     while round < 10
       get_guess # produce a string of four characters
-      # update_progress(guess) # display progress of game
+      # show_board # display progress of game
       @round += 1
     end
-    puts "Game over"
+    puts "Game over! The code was #{secret_code}"
   end
 end
