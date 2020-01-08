@@ -27,8 +27,9 @@ class Game
       else
         puts "Valid Guess: This is now turn: #{round}\n\n"
         board << guess.chars
-        board.each do |row|
-          print row, "\n"
+        update_progress(guess)
+        board.each_with_index do |row, i|
+          print row, feedback[i], "\n"
         end
         break
       end
@@ -48,20 +49,23 @@ class Game
   #   end
   # end
 
-  def output_progress(arr1 = nil)
+  def update_progress(str1 = nil)
     i = 0
-    if arr1[i] == secret_code[i]
-      feedback << "+"
-    elsif arr1[i] != secret_code[i] && secret_code.include?(arr1[i])
-      feedback << "_"
+    hints = []
+    if str1.chars[i] == secret_code[i]
+      hints << "+"
+    elsif secret_code.include?(str1.chars[i])
+      hints << "_"
+    else
+      hints << " "
     end
-    feedback
+    feedback << hints
   end
 
   def play_round
     while round < 10
       get_guess # produce a string of four characters
-      # output_progress # display progress of game
+      # update_progress(guess) # display progress of game
       @round += 1
     end
     puts "Game over"

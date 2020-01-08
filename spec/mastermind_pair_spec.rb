@@ -1,14 +1,11 @@
 require './lib/mastermind_pair.rb'
 
 RSpec.describe Game do
-  context '#output_progress' do
-    it "converts an Array to '+' or '_'" do
-      arr1 = %w[r o y g]
+  context '#update_progress' do
+    it "converts a String to Array of only '+' or '_'" do
+      str1 = "royg"
       game = Game.new
-      output = game.output_progress(arr1)
-      output.each do |x|
-        expect(x).to eq('+').or eq('_')
-      end
+      expect(game.update_progress(str1).length).to eq(4)
     end
   end
 end

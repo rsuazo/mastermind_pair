@@ -21,4 +21,6 @@ We're building a Mastermind Game similar to the one found [here as part of The O
 2. Created `spec/mastermind_pair_spec.rb`
 3. Wrote failing test for `#output_progress`
 4. Wrote passing test for `#output_progress`
+5. Changed `#output_progress` to `#update_progress`
+6. 
 
