@@ -49,7 +49,13 @@ class Game
   # end
 
   def output_progress(arr1 = nil)
-    arr1
+    i = 0
+    if arr1[i] == secret_code[i]
+      feedback << "+"
+    elsif arr1[i] != secret_code[i] && secret_code.include?(arr1[i])
+      feedback << "_"
+    end
+    feedback
   end
 
   def play_round
