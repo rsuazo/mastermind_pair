@@ -20,4 +20,5 @@ We're building a Mastermind Game similar to the one found [here as part of The O
 1. Added `@feedback` to provide feedback RE each turn
 2. Created `spec/mastermind_pair_spec.rb`
 3. Wrote failing test for `#output_progress`
+4. Wrote passing test for `#output_progress`
 
