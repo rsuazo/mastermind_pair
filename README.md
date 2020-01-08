@@ -16,5 +16,8 @@ We're building a Mastermind Game similar to the one found [here as part of The O
 9. built out `#get_guess` validation
 10. roughed in a cheap board, by adding `@board`
 
-
+## 1/7/2020:
+1. Added `@feedback` to provide feedback RE each turn
+2. Created `spec/mastermind_pair_spec.rb`
+3. 
 

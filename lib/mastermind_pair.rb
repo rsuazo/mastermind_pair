@@ -1,5 +1,5 @@
 class Game
-  attr_accessor :secret_code, :colors, :converted_code, :round, :guess, :board
+  attr_accessor :secret_code, :colors, :converted_code, :round, :guess, :board, :feedback
 
   def initialize
     @colors = %w[r o y g b i v]
@@ -7,6 +7,7 @@ class Game
     @round = 1
     @guess = ""
     @board = []
+    @feedback = []
   end
 
   def get_guess
