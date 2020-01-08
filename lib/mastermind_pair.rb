@@ -48,10 +48,14 @@ class Game
   #   end
   # end
 
+  def output_progress(arr1 = nil)
+    arr1
+  end
+
   def play_round
     while round < 10
       get_guess # produce a string of four characters
-      #output_response # display progress of game
+      # output_progress # display progress of game
       @round += 1
     end
     puts "Game over"
