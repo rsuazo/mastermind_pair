@@ -22,5 +22,6 @@ We're building a Mastermind Game similar to the one found [here as part of The O
 3. Wrote failing test for `#output_progress`
 4. Wrote passing test for `#output_progress`
 5. Changed `#output_progress` to `#update_progress`
-6. 
+6. struggled mightily with the logic to provide hints, LOL
+7. pushed a working version of a complete game
 
