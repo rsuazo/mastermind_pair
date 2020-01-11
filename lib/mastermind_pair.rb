@@ -6,6 +6,7 @@ class Game
     @secret_code = @colors.sample(4)
     @round = 1
     @guess = ""
+    # this instance variable would become assigned the Board instance
     @board = []
     @feedback = []
   end
@@ -84,4 +85,13 @@ class Game
     end
     puts "Game over! The code was #{secret_code}"
   end
+end
+
+class Board
+  
+  def initialize
+  end
+
+
+
 end
