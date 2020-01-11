@@ -13,9 +13,9 @@ class Game
   end
 
   def get_guess
-    puts "Guess the secret code\n\n\n"
-    puts "your choices are:\n\n"
-    puts "(r)ed (o)range (y)ellow (g)reen (b)lue (i)ndigo (v)iolet"
+    # puts "Guess the secret code\n\n\n"
+    # puts "your choices are:\n\n"
+    # puts "(r)ed (o)range (y)ellow (g)reen (b)lue (i)ndigo (v)iolet"
     loop do
       guess = gets.chomp.downcase
       if guess.length != 4
@@ -100,5 +100,10 @@ class Board
     puts "Game over! The secret code was: "
   end
 
+  def prompt_player
+    puts "Guess the secret code\n\n\n"
+    puts "your choices are:\n\n"
+    puts "(r)ed (o)range (y)ellow (g)reen (b)lue (i)ndigo (v)iolet"
+  end
 
 end

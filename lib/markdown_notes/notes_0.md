@@ -52,3 +52,29 @@ So then, here's what I'll do:
 2. Re-factor the game engine/`#play_round` method to reference both the `Board` class method of `#game_over_reveal` and `Game#secret_code` separately
 
 do that now..
+
+Ok, that's been done. But hwat else do I want to do now? 
+
+Well, I want to re-factor some other methods in the program. And since I now have a working `Board` class, I think I want to look for other ways to move things out of existing `Game` methods, and into the `Board` class.
+
+I want to do this specifically for the purpose of using the `Board` class...
+
+So browse the current methods of the `Game` class. How many `Game` class methods are there? 
+
+1. `#get_guess`
+2. `#update_progress`
+3. `#play_round`
+
+That's pretty lean. So these few methods are actually doing a lot of the "heavy lifting" of the entire program. 
+
+I'd be willing to bet that there's some "bloat" within those three methods. 
+
+By "bloat" I mean, stuff we could cull (re-factor) from the methods into separate methods. 
+
+I think back to the experience I just had with `Board#game_over_reveal`...and I see that there was an issue when I attempted to move a simple `puts` statement into it's own method. And that issue came from string interpolation referencing a different object. 
+
+Is there any method that contains excessive amounts of `puts` statements that are free of string interpolation...or references to other objects? 
+
+Look for that now...
+
+In the `#get_guess` method, the first three lines are in fact simple `puts` calls...
