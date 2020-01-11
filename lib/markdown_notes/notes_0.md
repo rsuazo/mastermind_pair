@@ -102,4 +102,19 @@ And again, this is more of a design issue/consideration.
 
 It's one thing to grab any ol' piece of silverware, plunge it into the peanut butter and jelly, and randomly slap all sides/edges/areas of a piece of bread, making a giant sloppy mess with peanut butter and jelly all over the place getting all over your hands....
 
-It's something entirely different when you use a good knife, expertly spread the peanut butter appropriately on one side of bread, do the same with jelly, and combine the two. 
+It's something entirely different when you use a good knife, expertly spread the peanut butter appropriately on one side of bread, do the same with jelly, and combine the two to make a convient, expertly made sandwich. 
+
+Programmings not that different, is it?
+
+And look at the `#get_guess` method; It's now becoming more "streamlined". 
+
+Methods in Ruby, they say...and I think in most languages...are intended to do one thing, or very few things. By reducing the clutter of unnecessary `puts` calls, the `#get_guess` method is becoming cleaner. More succinct. More to the point. More...Ruby-like. 
+
+## Re-factoring, but not moving anything
+Moving on...looking at the `#update_progress` method...the method looks fairly svelte. 
+
+No `puts` calls.
+
+But it still could be re-factored. 
+
+There's a very basic `if/else` expression. How could this be re-factored to the most minimal amount of code? What's another way this could be written?
