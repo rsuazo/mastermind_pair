@@ -25,3 +25,10 @@ We're building a Mastermind Game similar to the one found [here as part of The O
 6. struggled mightily with the logic to provide hints, LOL
 7. pushed a working version of a complete game
 
+## 1/11/2020: 
+All this is actually readily apparent in the commit history/PR request..but I'll do one more day to make my actions obvious: 
+1. Created `lib/markdown_notes/`
+2. added a `Board` class
+3. re-factored the `Game` class to leverage the `Board` class
+4. created `Board#prompt_player`
+

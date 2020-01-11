@@ -78,3 +78,28 @@ Is there any method that contains excessive amounts of `puts` statements that ar
 Look for that now...
 
 In the `#get_guess` method, the first three lines are in fact simple `puts` calls...
+
+Why not try to move that to a separate method? 
+
+Do that now..
+
+Pretty easy. 
+
+But then, since I did that...I'd need to find a way to display the same information at the same time as when it was being called before I made the new method. 
+
+Well...how did it work before? 
+
+It worked that every time the `#get_guess` method was called, the method would start by printing three lines to `puts`. 
+
+And the `#get_guess` method was being called by the `#play_round` method. So then I need to go into the `#play_round` method, and make a call to the `Board#prompt_player` method...since that's where I've moved those three `puts` to...
+
+## But whyeeee?
+Ok, that's a valid question. 
+
+**Why move `puts` of three different lines from `Game#get_guess` to `Board#player_prompt`?**
+
+And again, this is more of a design issue/consideration. 
+
+It's one thing to grab any ol' piece of silverware, plunge it into the peanut butter and jelly, and randomly slap all sides/edges/areas of a piece of bread, making a giant sloppy mess with peanut butter and jelly all over the place getting all over your hands....
+
+It's something entirely different when you use a good knife, expertly spread the peanut butter appropriately on one side of bread, do the same with jelly, and combine the two. 

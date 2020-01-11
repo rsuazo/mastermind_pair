@@ -80,6 +80,7 @@ class Game
 
   def play_round
     while round < 10
+      board_object_instance.prompt_player
       get_guess # produce a string of four characters
       # show_board # display progress of game
       @round += 1
