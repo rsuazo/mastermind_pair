@@ -17,3 +17,38 @@ And maybe the Computer would be something different that could exist? I mean, af
 It seems my focus is gravitating towards the creation of additional classes...so i'm curious about encapsulating some of the existing code into a separate `Board` class....and then ensuring that an instance of that `Board` class exists within the instance of the `Game` class. 
 
 Ok, I think I'm ready to look at code now....
+
+Ok, so I've begun to create this file that has two separate objects in it. But what I need is...I need for the `Board` object to be able to access the `Game` object.   
+
+Specifically I need the `Board` object to access the `Game.secret_code` instance variable. 
+
+So then, I know that....I need to pass the instantiated `Game` object to the `Board` object in the creation of the `Board` object. 
+
+But then, why would I want to pass the `Board` object the `Game` object...just so the `Board` object can go and look at the `Game.secret_code` object...from within the `Game` object? That seems silly. 
+
+And that's because it is silly. 
+
+But I feel that I may be onto something with the "passing of the Game object to the Board" object. I mean, I can pass the object into the `Board` object fairly easily. 
+
+Well, my brain does a couple things here. The first option was to....to be honest, I don't even remember what the first idea was, because as soon as I knew what the right option was, it immediately took the place of all other ideas. 
+
+Since I'm attempting to access the `Game@secret_code` instance variable as part of some string interpolation in a `Board` object....perhaps I should be moving the `@secret_code` over to the actual and entire `Board` class...away from the `Game` class. 
+
+Now when I suggest this, to me as a program designer/architect, this "feels" right. Maybe this is what's meant by "code smell"? Like, when I begin to think about a `Board` object in terms of a game being played....would I/could I argue that the `@secret_code` should "belong" to the `Board` or the `Game`? 
+
+And this triggers a discussion about the quality, state and behavior of specific classes, which seems to be subjective. 
+
+So arguments could be made for or against moving the `@secret_code` to the `Board` object. 
+
+However, for the sake of learning, I'm not going to do that. 
+
+Instead, what I'm going to do is: Instantiate the `Board` class with a `Game` class object being passed to it. 
+
+Wait a minute...I have no idea how that would work. I feel like I get into a situation of recursivity that my brain just can't wrap itself around. 
+
+So then, here's what I'll do: 
+
+1. Remove the problematic string interpolation, which will separate the issue
+2. Re-factor the game engine/`#play_round` method to reference both the `Board` class method of `#game_over_reveal` and `Game#secret_code` separately
+
+do that now..

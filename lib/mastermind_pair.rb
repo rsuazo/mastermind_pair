@@ -1,5 +1,5 @@
 class Game
-  attr_accessor :secret_code, :colors, :converted_code, :round, :guess, :board, :feedback
+  attr_accessor :secret_code, :colors, :converted_code, :round, :guess, :board, :feedback, :board_object_instance
 
   def initialize
     @colors = %w[r o y g b i v]
@@ -9,6 +9,7 @@ class Game
     # this instance variable would become assigned the Board instance
     @board = []
     @feedback = []
+    @board_object_instance = Board.new
   end
 
   def get_guess
@@ -83,7 +84,10 @@ class Game
       # show_board # display progress of game
       @round += 1
     end
-    puts "Game over! The code was #{secret_code}"
+    # puts "Game over! The code was #{secret_code}"
+    board_object_instance.game_over_reveal
+    # this is how I refactored to solve the Encapsluation issue I was having
+    print secret_code
   end
 end
 
@@ -92,6 +96,9 @@ class Board
   def initialize
   end
 
+  def game_over_reveal
+    puts "Game over! The secret code was: "
+  end
 
 
 end
