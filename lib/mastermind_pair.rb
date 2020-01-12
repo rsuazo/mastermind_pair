@@ -1,18 +1,21 @@
 class Game
-  attr_accessor :secret_code, :colors, :converted_code, :round, :guess, :board
+  attr_accessor :secret_code, :colors, :converted_code, :round, :guess, :board, :feedback, :board_object_instance
 
   def initialize
     @colors = %w[r o y g b i v]
     @secret_code = @colors.sample(4)
     @round = 1
     @guess = ""
+    # this instance variable would become assigned the Board instance
     @board = []
+    @feedback = []
+    @board_object_instance = Board.new
   end
 
   def get_guess
-    puts "Guess the secret code\n\n\n"
-    puts "your choices are:\n\n"
-    puts "(r)ed (o)range (y)ellow (g)reen (b)lue (i)ndigo (v)iolet"
+    # puts "Guess the secret code\n\n\n"
+    # puts "your choices are:\n\n"
+    # puts "(r)ed (o)range (y)ellow (g)reen (b)lue (i)ndigo (v)iolet"
     loop do
       guess = gets.chomp.downcase
       if guess.length != 4
@@ -26,8 +29,9 @@ class Game
       else
         puts "Valid Guess: This is now turn: #{round}\n\n"
         board << guess.chars
-        board.each do |row|
-          print row, "\n"
+        update_progress(guess)
+        board.each_with_index do |row, i|
+          print row, feedback[i], "\n"
         end
         break
       end
@@ -47,12 +51,60 @@ class Game
   #   end
   # end
 
+  # def show_board
+  #   board << guess.chars
+  #   update_progress(guess)
+  #   board.each_with_index do |row, i|
+  #     print row, feedback[i], "\n"
+  #   end
+  # end
+
+  def update_progress(str1 = nil)
+    i = 0
+    hints = []
+    while i < str1.chars.length
+      if secret_code.include?(str1.chars[i])
+        if str1.chars[i] == secret_code[i]
+          hints << "+"
+        else
+          hints << "_"
+        end
+      end
+      i += 1
+    end
+    while hints.length != 4
+      hints << " "
+    end
+    feedback << hints
+  end
+
   def play_round
     while round < 10
+      board_object_instance.prompt_player
       get_guess # produce a string of four characters
-      #output_response # display progress of game
+      # show_board # display progress of game
       @round += 1
     end
-    puts "Game over"
+    # puts "Game over! The code was #{secret_code}"
+    board_object_instance.game_over_reveal
+    # this is how I refactored to solve the Encapsluation issue I was having
+    print secret_code
   end
+end
+
+class Board
+  
+  def initialize
+  end
+
+  def game_over_reveal
+    puts "Game over! The secret code was: "
+  end
+
+  def prompt_player
+    puts "Guess the secret code\n\n\n"
+    puts "your choices are:\n\n"
+    puts "(r)ed (o)range (y)ellow (g)reen (b)lue (i)ndigo (v)iolet"
+  end
+
 end
