@@ -35,3 +35,20 @@ All this is actually readily apparent in the commit history/PR request..but I'll
 ## 1/14/2020:
 1. created `Game#introduction`: During every turn, the `board_object_instance#prompt_player` method would print `Guess the secret code` which is unnecessary. So I moved the text into `Game#introduction` because I feel like the introduction should happen only once...but prompting the player should happen on every turn...
 
+
+2. So now, running `ruby lib/run_this_file.rb`...creates some output that looks like this: 
+
+```
+WELCOME TO MASTERMIND!
+
+Guess the secret code
+
+your choices are: 
+
+(r)ed (o)range (y)ellow (g)reen (b)lue (i)ndigo (v)iolet
+your choices are: 
+
+(r)ed (o)range (y)ellow (g)reen (b)lue (i)ndigo (v)iolet
+```
+
+so now this needs to be fixed...
