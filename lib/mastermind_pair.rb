@@ -12,14 +12,18 @@ class Game
     @board_object_instance = Board.new
   end
 
+  # I took the text from the Board.prompt_player and moved it to an introduction
+  def introduction
+    puts "WELCOME TO MASTERMIND!\n\n"
+    puts "Guess the secret code\n\n"
+    puts "your choices are:\n\n"
+    puts "(r)ed (o)range (y)ellow (g)reen (b)lue (i)ndigo (v)iolet"
+  end
+
   def get_guess
-    # puts "Guess the secret code\n\n\n"
-    # puts "your choices are:\n\n"
-    # puts "(r)ed (o)range (y)ellow (g)reen (b)lue (i)ndigo (v)iolet"
     loop do
       guess = gets.chomp.downcase
       if guess.length != 4
-        p @secret_code
         puts "Invalid entry; only 4 colors"
       elsif !guess.chars.all? { |x| colors.include?(x) }
         puts "Invalid entry; your options are"
@@ -79,6 +83,7 @@ class Game
   end
 
   def play_round
+    introduction
     while round < 10
       board_object_instance.prompt_player
       get_guess # produce a string of four characters
@@ -102,7 +107,6 @@ class Board
   end
 
   def prompt_player
-    puts "Guess the secret code\n\n\n"
     puts "your choices are:\n\n"
     puts "(r)ed (o)range (y)ellow (g)reen (b)lue (i)ndigo (v)iolet"
   end
