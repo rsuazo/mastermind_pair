@@ -14,7 +14,8 @@ class Game
 
   # I took the text from the Board.prompt_player and moved it to an introduction
   def introduction
-    puts "Guess the secret code\n\n\n"
+    puts "WELCOME TO MASTERMIND!\n\n"
+    puts "Guess the secret code\n\n"
     puts "your choices are:\n\n"
     puts "(r)ed (o)range (y)ellow (g)reen (b)lue (i)ndigo (v)iolet"
   end
@@ -67,7 +68,7 @@ class Game
     hints = []
     while i < str1.chars.length
       if secret_code.include?(str1.chars[i])
-        if str1.chars[i] == secret_code[i]z
+        if str1.chars[i] == secret_code[i]
           hints << "+"
         else
           hints << "_"
