@@ -32,3 +32,6 @@ All this is actually readily apparent in the commit history/PR request..but I'll
 3. re-factored the `Game` class to leverage the `Board` class
 4. created `Board#prompt_player`
 
+## 1/14/2020:
+1. created `Game#introduction`: During every turn, the `board_object_instance#prompt_player` method would print `Guess the secret code` which is unnecessary. So I moved the text into `Game#introduction` because I feel like the introduction should happen only once...but prompting the player should happen on every turn...
+
