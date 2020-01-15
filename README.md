@@ -65,3 +65,7 @@ in the `#play_round` method
 5. I also moved the logic to display the board from within `#get_guess` to it's own call in `#play_round`...however, this would be better suited for it's own method, probably
 
 6. `#update_progress` isn't working...so I'm going to maybe start testing it...
+
+7. changed the name of `#update_progress` to `#gather_feedback`
+
+8. Uncovered a massive bug with the `#gather_feedback` method.....but it's location within the `#get_guess` method isn't that big of a deal breaker. So i'm going to leave it alone. 

@@ -31,13 +31,13 @@ class Game
       else
         puts "Valid Guess: This is now turn: #{round}\n\n"
         board << guess.chars
+        gather_feedback(guess)
         break
       end
     end
-    guess
   end
 
-  def update_progress(str1 = nil)
+  def gather_feedback(str1 = '')
     i = 0
     hints = []
     while i < str1.chars.length
@@ -54,7 +54,6 @@ class Game
       hints << " "
     end
     feedback << hints
-    feedback
   end
 
   def play_round
@@ -62,7 +61,7 @@ class Game
       round == 1 ? introduction : board_object_instance.prompt_player
       get_guess
       @round += 1
-      update_progress(guess)
+      # gather_feedback(guess)
       board.reverse.each_with_index do |row, i|
         print row, feedback[i], "\n"
       end

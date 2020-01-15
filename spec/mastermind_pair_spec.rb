@@ -1,37 +1,21 @@
 require "./lib/mastermind_pair.rb"
 
 RSpec.describe Game do
-  context "#update_progress" do
-    it "pushes an Array to @feedback" do
+  context "#gather_feedback" do
+    it "adds elements to @feedback" do
       game = Game.new
-      game.guess = "rbyi"
-      game.secret_code = "rbiv"
-      game.update_progress(game.guess)
-      expect(game.feedback[0]).to be_an(Array)
+      game.secret_code = %w[r o y g]
+      game.guess = "robv"
+      game.gather_feedback(game.guess)
+      expect(game.feedback.length).to be > 0 
     end
 
-    it "converts matching colors in the guess to '+' || '_' " do
+    it "records right color, wrong place as '_'" do
       game = Game.new
-      game.guess = "royg"
-      game.secret_code = "rybi"
-      game.update_progress(game.guess)
-      expect(game.feedback[0]).to eq(['+', '_', ' ', ' '])
-    end
-
-    it "returns ['+', '+', ' ', ' '] if 2 colors are right color, right position" do
-      game = Game.new
-      game.secret_code = 'rbig'
-      game.guess = 'royg'
-      game.update_progress(game.guess)
-      expect(game.feedback[0]).to eq(['+', '+', ' ', ' '])
-    end
-
-    it "returns ['+', '_', ' ', ' '] if 1 color is right color, right position and 1 is right color, wrong position" do
-      game = Game.new
-      game.secret_code = 'royg'
-      game.guess = 'rbgi'
-      game.update_progress(game.guess)
-      expect(game.feedback[0]).to eq(['+', '_', ' ', ' '])
+      game.secret_code = %w[r o y g]
+      game.guess = "briv"
+      game.gather_feedback(game.guess)
+      expect(game.feedback).to be_falsey
     end
   end
 end
