@@ -59,3 +59,9 @@ round == 1 ? introduction : board_object_instance.prompt_player
 ```
 
 in the `#play_round` method
+
+4. I moved the call to `#updated_progress` from within `#get_guess` to it's own call within `#play_round`
+
+5. I also moved the logic to display the board from within `#get_guess` to it's own call in `#play_round`...however, this would be better suited for it's own method, probably
+
+6. `#update_progress` isn't working...so I'm going to maybe start testing it...
