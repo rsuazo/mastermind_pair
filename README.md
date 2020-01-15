@@ -51,4 +51,11 @@ your choices are:
 (r)ed (o)range (y)ellow (g)reen (b)lue (i)ndigo (v)iolet
 ```
 
-so now this needs to be fixed...
+so now this needs to be fixed...  
+3. fixed #2 by doing this: 
+
+```ruby
+round == 1 ? introduction : board_object_instance.prompt_player
+```
+
+in the `#play_round` method
