@@ -6,13 +6,11 @@ class Game
     @secret_code = @colors.sample(4)
     @round = 1
     @guess = ""
-    # this instance variable would become assigned the Board instance
     @board = []
     @feedback = []
     @board_object_instance = Board.new
   end
 
-  # I took the text from the Board.prompt_player and moved it to an introduction
   def introduction
     puts "WELCOME TO MASTERMIND!\n\n"
     puts "Guess the secret code\n\n"
@@ -33,37 +31,13 @@ class Game
       else
         puts "Valid Guess: This is now turn: #{round}\n\n"
         board << guess.chars
-        update_progress(guess)
-        board.each_with_index do |row, i|
-          print row, feedback[i], "\n"
-        end
+        gather_feedback(guess)
         break
       end
-
-      # if guess == @converted_code.join
-      #   puts "You won!"
-      #   break
-      # else
-      #   puts "Try again!"
-      # end
     end
-    guess
   end
 
-  # def compare_guess(input)
-  #   if
-  #   end
-  # end
-
-  # def show_board
-  #   board << guess.chars
-  #   update_progress(guess)
-  #   board.each_with_index do |row, i|
-  #     print row, feedback[i], "\n"
-  #   end
-  # end
-
-  def update_progress(str1 = nil)
+  def gather_feedback(str1 = '')
     i = 0
     hints = []
     while i < str1.chars.length
@@ -83,22 +57,21 @@ class Game
   end
 
   def play_round
-    introduction
     while round < 10
-      board_object_instance.prompt_player
-      get_guess # produce a string of four characters
-      # show_board # display progress of game
+      round == 1 ? introduction : board_object_instance.prompt_player
+      get_guess
       @round += 1
+      # gather_feedback(guess)
+      board.reverse.each_with_index do |row, i|
+        print row, feedback[i], "\n"
+      end
     end
-    # puts "Game over! The code was #{secret_code}"
     board_object_instance.game_over_reveal
-    # this is how I refactored to solve the Encapsluation issue I was having
     print secret_code
   end
 end
 
 class Board
-  
   def initialize
   end
 
@@ -110,5 +83,4 @@ class Board
     puts "your choices are:\n\n"
     puts "(r)ed (o)range (y)ellow (g)reen (b)lue (i)ndigo (v)iolet"
   end
-
 end

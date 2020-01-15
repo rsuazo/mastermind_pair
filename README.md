@@ -51,4 +51,21 @@ your choices are:
 (r)ed (o)range (y)ellow (g)reen (b)lue (i)ndigo (v)iolet
 ```
 
-so now this needs to be fixed...
+so now this needs to be fixed...  
+3. fixed #2 by doing this: 
+
+```ruby
+round == 1 ? introduction : board_object_instance.prompt_player
+```
+
+in the `#play_round` method
+
+4. I moved the call to `#updated_progress` from within `#get_guess` to it's own call within `#play_round`
+
+5. I also moved the logic to display the board from within `#get_guess` to it's own call in `#play_round`...however, this would be better suited for it's own method, probably
+
+6. `#update_progress` isn't working...so I'm going to maybe start testing it...
+
+7. changed the name of `#update_progress` to `#gather_feedback`
+
+8. Uncovered a massive bug with the `#gather_feedback` method.....but it's location within the `#get_guess` method isn't that big of a deal breaker. So i'm going to leave it alone. 
