@@ -1,5 +1,9 @@
 class Game
+<<<<<<< HEAD
   attr_accessor :secret_code, :colors, :converted_code, :round, :guess, :board, :feedback, :board_object_instance, :game_flow
+=======
+  attr_accessor :secret_code, :colors, :converted_code, :round, :guess, :board, :feedback, :board_object_instance, :winner
+>>>>>>> 7b854b8f73d13cb1848779f6ac33dba4bd3f8c0e
 
   def initialize
     @colors = %w[r o y g b i v]
@@ -9,7 +13,11 @@ class Game
     @board = []
     @feedback = []
     @board_object_instance = Board.new
+<<<<<<< HEAD
     @game_flow = ''
+=======
+    @winner = false
+>>>>>>> 7b854b8f73d13cb1848779f6ac33dba4bd3f8c0e
   end
 
   def introduction
@@ -69,6 +77,14 @@ class Game
     end
     feedback << hints
   end
+  
+  def win_game?(arr = nil)
+    if arr[-1] == ["+","+","+","+"]
+      @winner = true
+    else
+      @winner = false
+    end
+  end
 
   def game_play
     case introduction
@@ -82,12 +98,15 @@ class Game
     while round < 10
       round == 1 ? introduction : board_object_instance.prompt_player
       get_guess
+      if win_game?(@feedback) == true
+        break
+      end
       @round += 1
-      # gather_feedback(guess)
       board.reverse.each_with_index do |row, i|
-        print row, feedback[i], "\n"
+        print row, feedback.reverse[i], "\n"
       end
     end
+    puts win_game?(feedback) ? 'you win!' : nil
     board_object_instance.game_over_reveal
     print secret_code
   end
