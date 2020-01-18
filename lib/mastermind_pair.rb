@@ -1,5 +1,5 @@
 class Game
-  attr_accessor :secret_code, :colors, :converted_code, :round, :guess, :board, :feedback, :board_object_instance
+  attr_accessor :secret_code, :colors, :converted_code, :round, :guess, :board, :feedback, :board_object_instance, :game_flow
 
   def initialize
     @colors = %w[r o y g b i v]
@@ -9,13 +9,27 @@ class Game
     @board = []
     @feedback = []
     @board_object_instance = Board.new
+    @game_flow = ''
   end
 
   def introduction
+    valid_input = %w[i m b]
+    puts "\n\n"
     puts "WELCOME TO MASTERMIND!\n\n"
-    puts "Guess the secret code\n\n"
-    puts "your choices are:\n\n"
-    puts "(r)ed (o)range (y)ellow (g)reen (b)lue (i)ndigo (v)iolet"
+    puts "(i)nstructions"
+    puts "(m)ake the code"
+    puts "(b)reak the code"
+
+    # puts "Guess the secret code\n\n"
+    # puts "your choices are:\n\n"
+    # puts "(r)ed (o)range (y)ellow (g)reen (b)lue (i)ndigo (v)iolet"
+    puts "\n\n"
+    game_flow = gets.chomp.downcase
+    while !valid_input.include?(game_flow)
+      puts "please select: (i) or (m) or (b)"
+      game_flow = gets.chomp.downcase
+    end
+    game_flow
   end
 
   def get_guess
@@ -56,7 +70,15 @@ class Game
     feedback << hints
   end
 
-  def play_round
+  def game_play
+    case introduction
+    when "i"
+      puts "displaying instructions"
+    when "m"
+      puts "you make the code"
+    when "b"
+      puts "you break the code"
+    end
     while round < 10
       round == 1 ? introduction : board_object_instance.prompt_player
       get_guess
@@ -68,6 +90,13 @@ class Game
     end
     board_object_instance.game_over_reveal
     print secret_code
+  end
+  
+  def instructions
+    # write some instructions
+    # they'll need to SIMPLY explain the game
+    # they'll need to end with a either another call to #introduction
+    # or they'll need to return a value for @game_flow
   end
 end
 
