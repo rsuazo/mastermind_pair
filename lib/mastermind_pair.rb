@@ -1,9 +1,5 @@
 class Game
-<<<<<<< HEAD
-  attr_accessor :secret_code, :colors, :converted_code, :round, :guess, :board, :feedback, :board_object_instance, :game_flow
-=======
-  attr_accessor :secret_code, :colors, :converted_code, :round, :guess, :board, :feedback, :board_object_instance, :winner
->>>>>>> 7b854b8f73d13cb1848779f6ac33dba4bd3f8c0e
+  attr_accessor :secret_code, :colors, :converted_code, :round, :guess, :board, :feedback, :board_object_instance, :winner, :game_flow
 
   def initialize
     @colors = %w[r o y g b i v]
@@ -13,11 +9,8 @@ class Game
     @board = []
     @feedback = []
     @board_object_instance = Board.new
-<<<<<<< HEAD
     @game_flow = ''
-=======
     @winner = false
->>>>>>> 7b854b8f73d13cb1848779f6ac33dba4bd3f8c0e
   end
 
   def introduction
