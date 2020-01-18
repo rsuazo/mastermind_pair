@@ -14,7 +14,7 @@ RSpec.describe Game do
     it "does something" do
       game = Game.new
       game.board.secret_code = %w[r o y g]
-      expect(game.gather_feedback('royg')).to be_falsey
+      expect(game.gather_feedback('oryb')).to eq([['+', '_', '_', ' ']])
     end
   end
  

@@ -74,6 +74,7 @@ class Game
       end
       i += 1
     end
+    hints.sort!
     while hints.length != 4
       hints << " "
     end
