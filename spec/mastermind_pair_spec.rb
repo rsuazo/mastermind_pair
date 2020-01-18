@@ -17,5 +17,13 @@ RSpec.describe Game do
       expect(game.gather_feedback('oryb')).to eq([['+', '_', '_', ' ']])
     end
   end
+
+  context '#get_guess' do
+    it 'returns a value' do
+      game = Game.new
+      game.get_guess('royg')
+      expect(game.guess).to be_falsey
+    end
+  end
  
 end

@@ -42,23 +42,24 @@ class Game
     end
   end
 
-  def get_guess
+  def get_guess(input = gets.chomp.downcase)
     loop do
-      guess = gets.chomp.downcase
-      if guess.length != 4
+      # guess ||= gets.chomp.downcase
+      if input.length != 4
         puts "Invalid entry; only 4 colors"
-      elsif !guess.chars.all? { |x| @board.colors.include?(x) }
+      elsif !input.chars.all? { |x| @board.colors.include?(x) }
         puts "Invalid entry; your options are"
         puts "(r)ed (o)range (y)ellow (g)reen (b)lue (i)ndigo (v)iolet"
-      elsif guess.chars.uniq.length != 4
+      elsif input.chars.uniq.length != 4
         puts "No duplicates"
       else
         puts "Valid Guess: This is now turn: #{round}\n\n"
-        guesses << guess.chars
-        gather_feedback(guess)
+        # gather_feedback(guess)
         break
       end
     end
+    guesses << input.chars
+    @guess = input
   end
 
   def gather_feedback(str1 = "")
@@ -81,10 +82,6 @@ class Game
     feedback << hints
   end
 
-  def gather_hints(str = nil)
-    str
-  end
-
   def win_game?(arr = nil)
     if arr[-1] == ["+", "+", "+", "+"]
       @winner = true
@@ -99,6 +96,7 @@ class Game
       # round == 1 ? introduction : board.prompt_player
       @round += 1
       get_guess
+      gather_feedback(guess)
       if win_game?(@feedback) == true
         break
       end
