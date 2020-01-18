@@ -1,30 +1,28 @@
 class Game
-  attr_accessor :round, :guess, :board, :feedback, :guesses, :winner, :game_flow
+  attr_accessor :turn, :guess, :board, :winner, :game_flow
 
   def initialize
     # @colors = %w[r o y g b i v]
     # @secret_code = @colors.sample(4)
-    @round = 0
+    @turn = 0
     @guess = ""
-    @guesses = []
-    @feedback = []
     @board = Board.new
     @game_flow = ""
     @winner = false
   end
 
   def introduction
-    valid_input = %w[i m b]
     puts "\n\n"
     puts "WELCOME TO MASTERMIND!\n\n"
     puts "(i)nstructions"
     puts "(m)ake the code"
     puts "(b)reak the code"
-
-    # puts "Guess the secret code\n\n"
-    # puts "your choices are:\n\n"
-    # puts "(r)ed (o)range (y)ellow (g)reen (b)lue (i)ndigo (v)iolet"
     puts "\n\n"
+    get_game_flow
+  end
+
+  def get_game_flow
+    valid_input = %w[i m b]
     game_flow = gets.chomp.downcase
     while !valid_input.include?(game_flow)
       puts "please select: (i) or (m) or (b)"
@@ -33,6 +31,8 @@ class Game
     case game_flow
     when "i"
       puts "displaying instructions"
+      # after #instructions method has been built, uncomment the line below
+      # instructions
     when "m"
       puts "you make the code"
     when "b"
@@ -53,12 +53,11 @@ class Game
       elsif input.chars.uniq.length != 4
         puts "No duplicates"
       else
-        puts "Valid Guess: This is now turn: #{round}\n\n"
-        # gather_feedback(guess)
+        puts "Valid Guess. You have #{10 - turn} turns left\n\n"
         break
       end
     end
-    guesses << input.chars
+    board.guesses << input.chars
     @guess = input
   end
 
@@ -79,7 +78,7 @@ class Game
     while hints.length != 4
       hints << " "
     end
-    feedback << hints
+    board.feedback << hints
   end
 
   def win_game?(arr = nil)
@@ -92,19 +91,14 @@ class Game
 
   def game_play
     introduction
-    while round < 10
-      # round == 1 ? introduction : board.prompt_player
-      @round += 1
+    while turn < 10
+      @turn += 1
       get_guess
       gather_feedback(guess)
-      if win_game?(@feedback) == true
-        break
-      end
-      guesses.reverse.each_with_index do |row, i|
-        print row, feedback.reverse[i], "\n"
-      end
+      display_the_board
+      win_game?(board.feedback) ? break : nil
     end
-    puts win_game?(feedback) ? "YOU WIN!" : nil
+    puts win_game?(board.feedback) ? "YOU WIN!" : nil
     board.game_over_reveal
     print board.secret_code
   end
@@ -114,16 +108,25 @@ class Game
     # they'll need to SIMPLY explain the game
     # they'll need to end with a either another call to #introduction
     # or they'll need to return a value for @game_flow
+    # when done, see line 36
+  end
+
+  def display_the_board
+    board.guesses.reverse.each_with_index do |row, i|
+      print row, board.feedback.reverse[i] , "\n"
+    end
   end
 end
 
 class Board
 
-  attr_accessor :colors, :secret_code
+  attr_accessor :colors, :secret_code, :guesses, :feedback
 
   def initialize
     @colors = %w[r o y g b i v]
     @secret_code = @colors.sample(4)
+    @guesses = []
+    @feedback = []
   end
 
   def game_over_reveal
