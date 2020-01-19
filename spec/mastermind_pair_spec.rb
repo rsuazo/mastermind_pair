@@ -4,8 +4,8 @@ RSpec.describe Game do
   context "#win_game?" do
     it "identifies winning scenario" do
       game = Game.new
-      game.feedback = [['+', '_', '_', ' '], ["+","+","+","+"]]
-      game.win_game?(game.feedback)
+      game.board.feedback = [['+', '_', '_', ' '], ["+","+","+","+"]]
+      game.win_game?(game.board.feedback)
       expect(game.winner).to eq(true)
     end  
   end
@@ -18,11 +18,11 @@ RSpec.describe Game do
     end
   end
 
-  context '#get_guess' do
-    it 'returns a value' do
+  context '#introduction' do
+    it 'does something' do
       game = Game.new
-      game.get_guess('royg')
-      expect(game.guess).to be_falsey
+      game.introduction
+      expect(game.game_flow).to be_falsey
     end
   end
  

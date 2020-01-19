@@ -18,30 +18,18 @@ class Game
     puts "(m)ake the code"
     puts "(b)reak the code"
     puts "\n\n"
-    get_game_flow
+    @game_flow = get_game_flow
   end
 
   def get_game_flow
     valid_input = %w[i m b]
-    game_flow = gets.chomp.downcase
-    while !valid_input.include?(game_flow)
+    input = gets.chomp.downcase
+    while !valid_input.include?(input)
       puts "please select: (i) or (m) or (b)"
-      game_flow = gets.chomp.downcase
+      input = gets.chomp.downcase
     end
-    case game_flow
-    when "i"
-      puts "displaying instructions"
-      # after #instructions method has been built, uncomment the line below
-      # instructions
-    when "m"
-      puts "you make the code: MAKE IT A GOOD ONE!"
-      puts "\n\n"
-      # make_the_code
-    when "b"
-      puts "You break the code: GOOD LUCK!"
-      puts "\n\n"
-    end
-    board.prompt_player  
+    board.prompt_player
+    input  
   end
 
   def get_guess
@@ -92,7 +80,7 @@ class Game
   end
 
   def game_play
-    introduction
+    # introduction
     while turn < 10
       @turn += 1
       get_guess
