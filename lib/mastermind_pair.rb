@@ -34,18 +34,19 @@ class Game
       # after #instructions method has been built, uncomment the line below
       # instructions
     when "m"
-      puts "you make the code"
+      puts "you make the code: MAKE IT A GOOD ONE!"
+      puts "\n\n"
       # make_the_code
     when "b"
       puts "You break the code: GOOD LUCK!"
       puts "\n\n"
-      board.prompt_player
     end
+    board.prompt_player  
   end
 
-  def get_guess(input = gets.chomp.downcase)
+  def get_guess
     loop do
-      # guess ||= gets.chomp.downcase
+      input = gets.chomp.downcase
       if input.length != 4
         puts "Invalid entry; only 4 colors"
       elsif !input.chars.all? { |x| @board.colors.include?(x) }
@@ -55,11 +56,11 @@ class Game
         puts "No duplicates"
       else
         puts "Valid Guess. You have #{10 - turn} turns left\n\n"
+        board.guesses << input.chars
+        @guess = input
         break
       end
     end
-    board.guesses << input.chars
-    @guess = input
   end
 
   def gather_feedback(str1 = "")
