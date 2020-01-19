@@ -35,6 +35,7 @@ class Game
       # instructions
     when "m"
       puts "you make the code"
+      # make_the_code
     when "b"
       puts "You break the code: GOOD LUCK!"
       puts "\n\n"
@@ -109,6 +110,10 @@ class Game
     # they'll need to end with a either another call to #introduction
     # or they'll need to return a value for @game_flow
     # when done, see line 36
+  end
+
+  def make_the_code
+    # this is the beginning of the #make_the_code function
   end
 
   def display_the_board
